@@ -34,13 +34,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-iV-pAc">
                                                     <rect key="frame" x="36" y="0.0" width="329" height="48.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCc-R1-kVf">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCc-R1-kVf">
                                                             <rect key="frame" x="0.0" y="0.0" width="329" height="24.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENj-uM-wlA">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENj-uM-wlA">
                                                             <rect key="frame" x="0.0" y="24.5" width="329" height="24"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <nil key="textColor"/>
@@ -62,6 +62,7 @@
                                     <outlet property="descriptionLabel" destination="ENj-uM-wlA" id="vnY-Dj-KOn"/>
                                     <outlet property="nameLabel" destination="gCc-R1-kVf" id="gIo-m1-lWw"/>
                                     <outlet property="symbolLabel" destination="AyJ-Y1-Ohn" id="uwx-Cp-JDY"/>
+                                    <segue destination="X0L-h0-ju5" kind="show" id="RWl-fw-HrQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -76,11 +77,62 @@
                                 <action selector="editButtonTapped:" destination="fb9-4a-PsR" id="ymP-fS-3IE"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="z1v-LU-Hac">
+                            <connections>
+                                <segue destination="X0L-h0-ju5" kind="show" id="GWf-Uv-Na5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ul-NL-2as" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1050.4000000000001" y="118.29085457271366"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="phX-jG-bL1">
+            <objects>
+                <tableViewController id="41i-rk-hqm" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e9D-f0-5Oy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vBB-XM-q91">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBB-XM-q91" id="1vy-BZ-zp9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="41i-rk-hqm" id="zPJ-u2-PNg"/>
+                            <outlet property="delegate" destination="41i-rk-hqm" id="UuY-Iw-xGJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="x3u-xu-I8i"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Zl-9z-EbR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2855" y="118"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hP5-kn-3ep">
+            <objects>
+                <navigationController id="X0L-h0-ju5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jwe-2Y-Grg"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="85W-1m-9VT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="41i-rk-hqm" kind="relationship" relationship="rootViewController" id="Fx5-ca-LxW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5B0-Wq-6s4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2017" y="118"/>
         </scene>
         <!--Emoji DIctionary-->
         <scene sceneID="TTZ-Rj-NpS">
@@ -99,4 +151,7 @@
             <point key="canvasLocation" x="268" y="119"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="RWl-fw-HrQ"/>
+    </inferredMetricsTieBreakers>
 </document>
