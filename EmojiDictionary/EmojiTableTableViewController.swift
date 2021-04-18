@@ -16,6 +16,19 @@ class EmojiTableTableViewController: UITableViewController {
         tableView.setEditing(!tableViewEditingMode, animated: true)
     }
     
+    @IBSegueAction func addEditEmoji(_ coder: NSCoder, sender: Any?) -> UITableViewController? {
+        
+        if let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            // Editing Emoji
+            let emojiToEdit = emojis[indexPath.row]
+            return AddEditEmojiTableViewController(coder: coder, emoji: emojiToEdit)
+        } else {
+            return AddEditEmojiTableViewController(coder: coder, emoji: nil)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,10 +72,10 @@ class EmojiTableTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let emoji = emojis[indexPath.row]
-        print("\(emoji.symbol) \(indexPath)")
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let emoji = emojis[indexPath.row]
+//        print("\(emoji.symbol) \(indexPath)")
+//    }
 
     /*
     // Override to support conditional editing of the table view.

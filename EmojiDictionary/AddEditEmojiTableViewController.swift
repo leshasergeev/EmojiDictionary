@@ -10,9 +10,27 @@ import UIKit
 
 class AddEditEmojiTableViewController: UITableViewController {
 
+    
+    @IBOutlet weak var symbolTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var usageTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let emoji = emoji {
+            symbolTextField.text        = emoji.symbol
+            nameTextField.text          = emoji.name
+            descriptionTextField.text   = emoji.description
+            usageTextField.text         = emoji.usage
+            title = "Edit Emoji"
+        } else {
+            title = "Add Emoji"
+        }
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
