@@ -34,13 +34,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-iV-pAc">
                                                     <rect key="frame" x="36" y="0.0" width="329" height="48.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCc-R1-kVf">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCc-R1-kVf">
                                                             <rect key="frame" x="0.0" y="0.0" width="329" height="24.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENj-uM-wlA">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Description Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENj-uM-wlA">
                                                             <rect key="frame" x="0.0" y="24.5" width="329" height="24"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <nil key="textColor"/>
@@ -95,7 +95,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="e9D-f0-5Oy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
                             <tableViewSection headerTitle="Symbol" id="M6H-zb-FI9">
                                 <cells>
@@ -110,6 +110,9 @@
                                                     <rect key="frame" x="5" y="5" width="365" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="41i-rk-hqm" eventType="editingChanged" id="CW0-1o-D1D"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -135,6 +138,9 @@
                                                     <rect key="frame" x="5" y="5" width="365" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="41i-rk-hqm" eventType="editingChanged" id="Cfj-GQ-8mB"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -160,6 +166,9 @@
                                                     <rect key="frame" x="5" y="5" width="365" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="41i-rk-hqm" eventType="editingChanged" id="d4d-BJ-MBA"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -185,6 +194,9 @@
                                                     <rect key="frame" x="5" y="5" width="365" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="41i-rk-hqm" eventType="editingChanged" id="Ve8-tz-8a1"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -203,15 +215,28 @@
                             <outlet property="delegate" destination="41i-rk-hqm" id="UuY-Iw-xGJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="x3u-xu-I8i"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="x3u-xu-I8i">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="Fgq-pZ-fNE">
+                            <connections>
+                                <segue destination="K9A-pP-Jgw" kind="unwind" unwindAction="unwindToEmojiTableViewWithSegue:" id="Mw8-2h-kGE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="mbd-Kg-H9v">
+                            <connections>
+                                <segue destination="K9A-pP-Jgw" kind="unwind" identifier="saveUnwind" unwindAction="unwindToEmojiTableViewWithSegue:" id="LMc-yS-tKb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="5ej-K3-WWm" id="EgZ-aQ-LFo"/>
                         <outlet property="nameTextField" destination="BGk-XK-5YC" id="gUW-u5-MN8"/>
+                        <outlet property="saveButton" destination="mbd-Kg-H9v" id="ePF-B7-456"/>
                         <outlet property="symbolTextField" destination="kcC-TT-MA7" id="9pt-PT-n0a"/>
                         <outlet property="usageTextField" destination="dT7-py-80o" id="1Ea-Hd-Jew"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Zl-9z-EbR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="K9A-pP-Jgw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2855" y="118"/>
         </scene>
